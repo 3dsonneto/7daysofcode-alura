@@ -8,14 +8,46 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    struct Movie: Identifiable {
+        let id: Int
+        let title: String
+        let releaseDate: String
+        let image: String?
+        let overview: String
+        let voteAverage: Double
+    }
+    
+    let movies: [Movie] = [
+        Movie(id: 1, title: "Órfã 2: A Origem", releaseDate: "2022-07-27", image: nil, overview: "", voteAverage: 7.2),
+        Movie(id: 2, title: "Minions 2: A Origem de Gru", releaseDate: "2022-06-29", image: nil, overview: "", voteAverage: 7.8),
+        Movie(id: 3, title: "Thor: Amor e Trovão", releaseDate: "2022-07-06", image: nil, overview: "", voteAverage: 6.8),
+        Movie(id: 4, title: "Avatar", releaseDate: "2009-12-18", image: nil, overview: "", voteAverage: 8.8),
+    ]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            LinearGradient(
+                colors: [.lightDeepPurple, .darkDeepPurple],
+                startPoint: .top,
+                endPoint: .bottom
+            ).ignoresSafeArea()
+            VStack {
+                Text("Filmes Populares")
+                    .font(
+                        .system(
+                    size: 28,
+                    weight: .bold
+                        ))
+                    .foregroundColor(.white)
+                List {
+                    ForEach(movies) {movie in
+                        Text(movie.title).background(Color.clear)
+                            .listRowBackground(Color.clear)
+                    }
+                }.background(Color.clear)
+            }
         }
-        .padding()
     }
 }
 
