@@ -42,10 +42,10 @@ struct ContentView: View {
                     .foregroundColor(.white)
                 List {
                     ForEach(movies) {movie in
-                        Text(movie.title).background(Color.clear)
-                            .listRowBackground(Color.clear)
-                    }
-                }.background(Color.clear)
+//                        Text(movie.title).background(Color.clear)
+//                            .listRowBackground(Color.clear)
+                        MovieCell(image: "https://cdn.shopify.com/s/files/1/1057/4964/products/Scarface-Vintage-Movie-Poster-Original-1-Sheet-27x41.jpg?v=1663223050", name: "Scarface", releaseDate: "17/05/1984")                    }.listRowBackground(Color.clear)
+                }.scrollContentBackground(.hidden)
             }
         }
     }
